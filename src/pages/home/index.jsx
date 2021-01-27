@@ -19,7 +19,6 @@ const Index = () => {
         },
       });
 
-      console.log(data);
       setProducts(data);
     } catch (error) {
       console.log("error: ", error);
@@ -27,7 +26,20 @@ const Index = () => {
   };
 
   useEffect(() => {
-    handleSearch();
+    const getItems = async () => {
+      try {
+        const { data } = await http.get("/search", {
+          params: {
+            query: "",
+          },
+        });
+
+        setProducts(data);
+      } catch (error) {
+        console.log("error: ", error);
+      }
+    };
+    getItems();
   }, []);
 
   return (

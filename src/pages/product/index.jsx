@@ -42,7 +42,6 @@ const Index = () => {
             product,
           },
         });
-        console.log(data);
         setItem(data);
       } catch (error) {
         console.log("error: ", error);
@@ -50,7 +49,7 @@ const Index = () => {
     };
 
     getProduct();
-  }, []);
+  }, [id, product]);
 
   const itemThumbnail = (
     <CardContainer>
